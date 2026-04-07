@@ -1,0 +1,52 @@
+spec_version: 1
+name: ai-firewall-openenv
+version: "1.0.0"
+description: "AI-driven adaptive firewall for automated threat detection"
+type: space
+runtime: fastapi
+app: server.app:app
+port: 7860
+
+tasks:
+  easy:
+    name: "Perimeter Defense"
+    description: "200-step episode with obvious attacks"
+    grading_seed: 101
+    threshold: 0.70
+  medium:
+    name: "Mixed Threat Landscape"
+    description: "500-step episode with multi-stage attacks and ambiguous traffic"
+    grading_seed: 202
+    threshold: 0.50
+  hard:
+    name: "Advanced Persistent Threat"
+    description: "1000-step episode with adaptive APTs and stealth threats"
+    grading_seed: 303
+    threshold: 0.45
+
+tools:
+  - name: evaluate_session
+    description: "Get detailed features and observation for a specific session"
+  - name: take_action
+    description: "Apply a firewall action to a session (ALLOW, BLOCK, etc.)"
+  - name: get_network_stats
+    description: "Get cumulative episode statistics and performance metrics"
+  - name: get_threat_intelligence
+    description: "Access current threat intelligence feed"
+
+observation_space:
+  type: box
+  shape: [22]
+  low: 0.0
+  high: 1.0
+
+action_space:
+  type: discrete
+  n: 6
+  labels:
+    0: ALLOW
+    1: BLOCK
+    2: INSPECT
+    3: SANDBOX
+    4: RATE_LIMIT
+    5: QUARANTINE
