@@ -24,7 +24,7 @@ load_dotenv()
 
 # Environment Variables per Spec (defaults required for API_BASE_URL and MODEL_NAME)
 API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
-MODEL_NAME = os.getenv("MODEL_NAME", "meta-llama/Llama-3.1-8B-Instruct")
+MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-Coder-7B-Instruct")
 HF_TOKEN = os.getenv("HF_TOKEN")
 
 if HF_TOKEN is None:
