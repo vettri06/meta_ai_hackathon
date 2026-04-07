@@ -1,5 +1,5 @@
 ---
-title: AI Firewall OpenEnv
+title: Firewall Meta Ai
 emoji: 🛡️
 colorFrom: red
 colorTo: blue
