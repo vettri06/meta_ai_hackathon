@@ -166,7 +166,7 @@ def run_task(agent: InferenceAgent, task: str):
     final_score = 0.01
 
     try:
-        while not done and steps_taken < max_steps:
+        while not done:
             action = 0
             error_msg = None
 
@@ -177,7 +177,8 @@ def run_task(agent: InferenceAgent, task: str):
                     threat_intel = env.get_threat_intelligence()
                     
                     # Switch to heuristic if running out of total time (26 mins+)
-                    if time.time() - START_TIME_GLOBAL > TIMEOUT_BUFFER:
+                    # OR if we have exceeded the LLM step cap for this task
+                    if (time.time() - START_TIME_GLOBAL > TIMEOUT_BUFFER) or (steps_taken >= max_steps):
                         action = agent._heuristic_action(session_data, threat_intel)
                     else:
                         action = agent.get_action(session_data, threat_intel)
