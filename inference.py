@@ -9,7 +9,6 @@ from typing import Any, Dict, List, Optional
 
 import numpy as np
 from openai import OpenAI
-from dotenv import load_dotenv
 
 # Import the environment directly for the AI Firewall
 from server.firewall_environment import FirewallEnvironment, ACTIONS, TASK_CONFIGS
@@ -20,15 +19,10 @@ from server.firewall_environment import FirewallEnvironment, ACTIONS, TASK_CONFI
 # 3. Required Environment Variables with Defaults         ✅
 # 4. Strict Output Format: [START], [STEP], [END]         ✅
 
-load_dotenv()
-
-# Environment Variables per Spec (defaults required for API_BASE_URL and MODEL_NAME)
-API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
+# Environment Variables per Spec
+API_BASE_URL = os.environ["API_BASE_URL"]
 MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-Coder-7B-Instruct")
-HF_TOKEN = os.getenv("HF_TOKEN")
-
-if HF_TOKEN is None:
-    raise ValueError("HF_TOKEN environment variable is required")
+API_KEY = os.environ["API_KEY"]
 
 # Benchmark configuration
 BENCHMARK = "ai-firewall"
@@ -48,14 +42,15 @@ def log_step(step: int, action: str, reward: float, done: bool, error: Optional[
     print(f"[STEP] step={step} action={action} reward={reward:.2f} done={done_val} error={error_val}", flush=True)
 
 
-def log_end(success: bool, steps: int, rewards: List[float]) -> None:
-    rewards_str = ",".join(f"{r:.2f}" for r in rewards)
-    print(f"[END] success={format_bool(success)} steps={steps} rewards={rewards_str}", flush=True)
+def log_end(task: str, score: float, steps: int) -> None:
+    # Score should be between 0.01 and 0.99 as per user feedback
+    clamped_score = max(0.01, min(0.99, score))
+    print(f"[END] task={task} score={clamped_score:.2f} steps={steps}", flush=True)
 
 
 class InferenceAgent:
     def __init__(self):
-        self.client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
+        self.client = OpenAI(base_url=API_BASE_URL, api_key=API_KEY)
 
     def get_action(self, session_data: Dict[str, Any], threat_intel: Dict[str, Any]) -> int:
         """Get action using LLM via OpenAI client interface with heuristic fallback."""
@@ -159,7 +154,7 @@ def run_task(agent: InferenceAgent, task: str):
     done = False
     rewards: List[float] = []
     steps_taken = 0
-    success = False
+    final_score = 0.01
 
     try:
         while not done:
@@ -200,14 +195,13 @@ def run_task(agent: InferenceAgent, task: str):
         final_stats = env.get_network_stats()
         from server.graders import grade_stats
         grade = grade_stats(task, final_stats)
-        # success = episode completed AND score meets threshold
-        success = grade.get("passed", False)
+        final_score = float(grade.get("score", 0.01))
 
     except Exception as e:
         print(f"[DEBUG] Error during task {task}: {e}", file=sys.stderr)
-        success = False
+        final_score = 0.01
     finally:
-        log_end(success=success, steps=steps_taken, rewards=rewards)
+        log_end(task=task, score=final_score, steps=steps_taken)
 
 
 def main():
