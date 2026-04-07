@@ -172,7 +172,7 @@ def health() -> HealthResponse:
 
 
 @app.post("/reset", response_model=StateResponse)
-def reset(request: ResetRequest) -> StateResponse:
+def reset(request: ResetRequest = ResetRequest()) -> StateResponse:
     try:
         state = env.reset(task=request.task, seed=request.seed)
         return StateResponse(**state)
@@ -181,13 +181,15 @@ def reset(request: ResetRequest) -> StateResponse:
 
 
 @app.post("/step", response_model=StepResponse)
-def step(request: StepRequest) -> StepResponse:
+def step(request: StepRequest = StepRequest()) -> StepResponse:
     result = env.step(action_map=request.actions)
     return StepResponse(**result)
 
 
 @app.post("/step_single", response_model=StepSingleResponse)
-def step_single(request: StepSingleRequest) -> StepSingleResponse:
+def step_single(request: StepSingleRequest = None) -> StepSingleResponse:
+    if request is None:
+        raise HTTPException(status_code=422, detail="Body is required for /step_single")
     try:
         result = env.step_single(action=request.action)
         return StepSingleResponse(**result)
