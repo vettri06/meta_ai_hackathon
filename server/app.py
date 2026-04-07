@@ -160,6 +160,12 @@ app.add_middleware(
 )
 
 
+@app.get("/", response_class=HTMLResponse)
+def root() -> HTMLResponse:
+    """Redirect root to the playground UI."""
+    return HTMLResponse(content=PLAYGROUND_HTML)
+
+
 @app.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
     return HealthResponse(status="ok", version="0.2.0")
