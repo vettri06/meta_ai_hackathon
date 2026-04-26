@@ -1,17 +1,10 @@
-"""Heuristic baseline agent for the Adaptive AI Firewall environment.
+from server.firewall_environment import FirewallEnvironment
+from server.graders import run_deterministic_grade
 
-Uses the same 8-rule heuristic as inference.py for deterministic testing.
-"""
-from __future__ import annotations
-
-from typing import Dict, List
-
-
-def heuristic_policy(env, session_ids: List[str]) -> Dict[str, int]:
-    """Rule-based policy using session features and threat intelligence."""
+def new_heuristic_policy(env, session_ids):
     threat_intel = env.get_threat_intelligence()
     known_bad_ports = set(threat_intel.get("known_bad_ports", []))
-    actions: Dict[str, int] = {}
+    actions = {}
 
     for sid in session_ids:
         try:
@@ -21,8 +14,6 @@ def heuristic_policy(env, session_ids: List[str]) -> Dict[str, int]:
             continue
 
         features = data.get("features", {})
-
-        # If already revealed as malicious, block immediately
         if data.get("revealed_malicious") is True:
             actions[sid] = 1
             continue
@@ -60,3 +51,8 @@ def heuristic_policy(env, session_ids: List[str]) -> Dict[str, int]:
             actions[sid] = 0
 
     return actions
+
+for task in ['easy', 'medium', 'hard']:
+    env = FirewallEnvironment(seed=303)
+    res = run_deterministic_grade(env, task, new_heuristic_policy)
+    print(f"{task}: score={res['score']:.4f} det={res['breakdown']['detection_rate']:.4f} fp_comp={res['breakdown']['fp_complement']:.4f} eff={res['breakdown']['efficiency']:.4f}")

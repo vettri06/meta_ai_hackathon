@@ -106,6 +106,13 @@ class NetworkStatsResponse(BaseModel):
     inspections: int
     expired_malicious: int
     expired_benign: int
+    # Extended metrics (from enhanced environment parameters)
+    false_flag_accuracy: float = 0.0
+    stealth_detection_rate: float = 0.0
+    burst_ticks: int = 0
+    false_flags_seen: int = 0
+    stealth_attacks_seen: int = 0
+    config_params: Dict[str, Any] = {}
 
 class HealthResponse(BaseModel):
     status: str

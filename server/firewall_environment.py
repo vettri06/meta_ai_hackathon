@@ -21,21 +21,48 @@ TASK_CONFIGS = {
         "benign_ratio": 0.80,
         "threat_probability": 0.12,
         "traffic_lambda": 5,
-        "budget": 100.0,        # ~0.50 budget per step
+        "budget": 100.0,           # ~0.50 budget per step
+        # ── New environment parameters ──
+        "noise_level": 0.02,       # Feature noise σ injected into observations
+        "stealth_multiplier": 1.0, # Multiplier on malicious profile blending
+        "session_ttl_benign": 3,   # Ticks before benign sessions expire
+        "session_ttl_malicious": 2,# Ticks before malicious sessions expire
+        "escalation_rate_mod": 1.0,# Multiplier on attacker escalation probability
+        "false_flag_prob": 0.0,    # Probability of benign sessions with suspicious features
+        "burst_prob": 0.05,        # Probability of a traffic burst each tick
+        "burst_size_mult": 2.0,    # Multiplier on session count during bursts
     },
     "medium": {
         "max_steps": 500,
         "benign_ratio": 0.65,
         "threat_probability": 0.22,
         "traffic_lambda": 6,
-        "budget": 300.0,       # ~0.60 budget per step
+        "budget": 300.0,           # ~0.60 budget per step
+        # ── New environment parameters ──
+        "noise_level": 0.05,
+        "stealth_multiplier": 1.3,
+        "session_ttl_benign": 3,
+        "session_ttl_malicious": 2,
+        "escalation_rate_mod": 1.2,
+        "false_flag_prob": 0.08,
+        "burst_prob": 0.10,
+        "burst_size_mult": 2.5,
     },
     "hard": {
         "max_steps": 1000,
         "benign_ratio": 0.70,
         "threat_probability": 0.30,
         "traffic_lambda": 7,
-        "budget": 600.0,       # ~0.60 budget per step
+        "budget": 600.0,           # ~0.60 budget per step
+        # ── New environment parameters ──
+        "noise_level": 0.08,
+        "stealth_multiplier": 1.6,
+        "session_ttl_benign": 2,
+        "session_ttl_malicious": 2,
+        "escalation_rate_mod": 1.5,
+        "false_flag_prob": 0.12,
+        "burst_prob": 0.15,
+        "burst_size_mult": 3.0,
     },
 }
 
@@ -57,6 +84,12 @@ class EpisodeMetrics:
     sessions_expired_benign: int = 0
     correct_allows: int = 0
     inspections: int = 0
+    # ── New metrics for extended parameters ──
+    false_flags_seen: int = 0          # Benign sessions that looked suspicious
+    false_flags_correctly_allowed: int = 0  # False flags the agent didn't block
+    burst_ticks: int = 0               # Number of ticks with traffic bursts
+    stealth_attacks_seen: int = 0      # Stealthy attacks encountered
+    stealth_attacks_detected: int = 0  # Stealthy attacks successfully caught
 
 
 class FirewallEnvironment:
@@ -70,6 +103,14 @@ class FirewallEnvironment:
       - Reward: multi-objective (security + availability + efficiency + timeliness)
       - Done: when max_steps reached or budget depleted
       - INSPECT keeps session alive for a second action (two-phase decision)
+
+    Extended parameters per task config:
+      - noise_level: Gaussian noise σ injected into observation features
+      - stealth_multiplier: Controls how much malicious sessions mimic benign
+      - session_ttl_*: Per-class session time-to-live in ticks
+      - escalation_rate_mod: Multiplier on attacker phase escalation speed
+      - false_flag_prob: Probability of benign sessions with suspicious features
+      - burst_prob / burst_size_mult: Traffic burst dynamics
     """
 
     def __init__(self, seed: int = 0, budget: Optional[float] = None) -> None:
@@ -293,6 +334,14 @@ class FirewallEnvironment:
         early_detection_bonus = m.early_detection_sum / max(m.detections, 1)
         cascade_prevention = 1.0 - (m.cascade_failures / max(total_malicious, 1))
 
+        # Extended metrics
+        false_flag_accuracy = (
+            m.false_flags_correctly_allowed / max(m.false_flags_seen, 1)
+        )
+        stealth_detection_rate = (
+            m.stealth_attacks_detected / max(m.stealth_attacks_seen, 1)
+        )
+
         return {
             "episode_id": self.episode_id,
             "task": self.task,
@@ -312,6 +361,16 @@ class FirewallEnvironment:
             "inspections": m.inspections,
             "expired_malicious": m.sessions_expired_malicious,
             "expired_benign": m.sessions_expired_benign,
+            # ── Extended stats ──
+            "false_flag_accuracy": round(false_flag_accuracy, 6),
+            "stealth_detection_rate": round(stealth_detection_rate, 6),
+            "burst_ticks": m.burst_ticks,
+            "false_flags_seen": m.false_flags_seen,
+            "stealth_attacks_seen": m.stealth_attacks_seen,
+            "config_params": {
+                k: v for k, v in TASK_CONFIGS[self.task].items()
+                if k not in ("max_steps", "budget")
+            },
         }
 
     def get_threat_intelligence(self) -> Dict:
@@ -349,10 +408,10 @@ class FirewallEnvironment:
         inspected = action == 2  # INSPECT
 
         # ── INSPECT keeps the session alive for a second decision ──
+        # Session moves from pending → inspected only (no duplicate references)
         if inspected and session_id not in self.inspected_sessions:
             metadata["revealed"] = True
             self.inspected_sessions[session_id] = session
-            self.pending_sessions[session_id] = session
             self.metrics.inspections += 1
             # Compute reward for the inspection itself
             reward, components = self.reward_engine.reward(
@@ -391,6 +450,9 @@ class FirewallEnvironment:
                 attacker_id = metadata.get("attacker_id")
                 if attacker_id:
                     self._blocked_attacker_ids.add(attacker_id)
+                # Track stealth detection
+                if metadata.get("is_stealth", False):
+                    self.metrics.stealth_attacks_detected += 1
             else:
                 if metadata.get("attack_phase", 0) >= 2:
                     self.metrics.cascade_failures += 1
@@ -400,6 +462,9 @@ class FirewallEnvironment:
                 self.metrics.false_positives += 1
             elif action == 0:
                 self.metrics.correct_allows += 1
+                # Track false flag accuracy
+                if metadata.get("is_false_flag", False):
+                    self.metrics.false_flags_correctly_allowed += 1
 
         record = self._make_record(session_id, action, malicious, reward, components)
         self.action_log.append(record)
@@ -420,20 +485,62 @@ class FirewallEnvironment:
     def _spawn_sessions(self) -> None:
         """Generate new benign and malicious sessions for current tick."""
         config = TASK_CONFIGS[self.task]
-        benign_count = int(max(1, self.rng.poisson(
-            config["traffic_lambda"] * config["benign_ratio"],
-        )))
+        base_benign_count = config["traffic_lambda"] * config["benign_ratio"]
+
+        # ── Traffic burst mechanic ──
+        is_burst = self.rng.random() < config.get("burst_prob", 0.0)
+        if is_burst:
+            self.metrics.burst_ticks += 1
+            base_benign_count *= config.get("burst_size_mult", 2.0)
+
+        benign_count = int(max(1, self.rng.poisson(base_benign_count)))
         benign = self.generator.generate_benign_sessions(
             tick=self.current_tick, count=benign_count,
         )
 
+        # ── False flag injection: benign sessions with suspicious features ──
+        false_flag_prob = config.get("false_flag_prob", 0.0)
+        for session in benign:
+            if false_flag_prob > 0.0 and self.rng.random() < false_flag_prob:
+                session["metadata"]["is_false_flag"] = True
+                self.metrics.false_flags_seen += 1
+                # Inject suspicious features to mimic malicious traffic
+                session["features"]["entropy_score"] = float(
+                    min(0.99, session["features"]["entropy_score"] + self.rng.uniform(0.15, 0.35))
+                )
+                session["features"]["session_history_score"] = float(
+                    max(0.0, session["features"]["session_history_score"] - self.rng.uniform(0.2, 0.4))
+                )
+                session["features"]["geo_distance"] = float(
+                    session["features"]["geo_distance"] + self.rng.uniform(1500.0, 3000.0)
+                )
+            else:
+                session["metadata"]["is_false_flag"] = False
+
         self.threat_engine.maybe_spawn_attacker(config["threat_probability"])
+
+        # ── Pass escalation rate modifier and stealth multiplier to threat engine ──
+        escalation_mod = config.get("escalation_rate_mod", 1.0)
+        stealth_mult = config.get("stealth_multiplier", 1.0)
         malicious = self.threat_engine.generate_attack_sessions(
             tick=self.current_tick,
             generator=self.generator,
             blocked_attackers=self._blocked_attacker_ids,
+            escalation_rate_mod=escalation_mod,
+            stealth_multiplier=stealth_mult,
         )
         self._blocked_attacker_ids = set()
+
+        # ── Apply session TTLs from config ──
+        ttl_benign = config.get("session_ttl_benign", 3)
+        ttl_malicious = config.get("session_ttl_malicious", 2)
+        for session in benign:
+            session["expires_tick"] = self.current_tick + ttl_benign
+        for session in malicious:
+            session["expires_tick"] = self.current_tick + ttl_malicious
+            # Track stealth attacks
+            if session["metadata"].get("is_stealth", False):
+                self.metrics.stealth_attacks_seen += 1
 
         for session in benign + malicious:
             self.pending_sessions[session["session_id"]] = session
@@ -478,7 +585,11 @@ class FirewallEnvironment:
             self._session_queue.append(sid)
 
     def _current_observation(self) -> List[float]:
-        """Get normalized observation for the next session in queue."""
+        """Get normalized observation for the next session in queue.
+
+        Applies observation noise based on the task's noise_level parameter.
+        This simulates sensor imprecision and makes classification harder.
+        """
         if self._session_queue:
             sid = self._session_queue[0]
             session = (
@@ -486,5 +597,11 @@ class FirewallEnvironment:
                 or self.pending_sessions.get(sid)
             )
             if session:
-                return self.generator.to_observation_vector(session)
+                obs = self.generator.to_observation_vector(session)
+                # ── Inject observation noise ──
+                noise_level = TASK_CONFIGS[self.task].get("noise_level", 0.0)
+                if noise_level > 0.0:
+                    noise = self.rng.normal(0.0, noise_level, size=len(obs))
+                    obs = [max(0.0, min(1.0, v + n)) for v, n in zip(obs, noise)]
+                return obs
         return [0.0] * OBS_DIM

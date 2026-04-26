@@ -1,0 +1,2017 @@
+{
+  "task": "easy",
+  "score": 0.943781,
+  "passed": true,
+  "threshold": 0.7,
+  "detection_rate": 0.862903,
+  "false_positive_rate": 0.0,
+  "efficiency": 0.97255,
+  "steps": 200,
+  "llm_calls": 200,
+  "llm_actions": [
+    {
+      "step": 0,
+      "call": 1,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 69.1
+    },
+    {
+      "step": 1,
+      "call": 2,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 14.7
+    },
+    {
+      "step": 2,
+      "call": 3,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 24.6
+    },
+    {
+      "step": 3,
+      "call": 4,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 18.2
+    },
+    {
+      "step": 4,
+      "call": 5,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.0
+    },
+    {
+      "step": 5,
+      "call": 6,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 9.0
+    },
+    {
+      "step": 6,
+      "call": 7,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 15.8
+    },
+    {
+      "step": 7,
+      "call": 8,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 15.0
+    },
+    {
+      "step": 8,
+      "call": 9,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 14.3
+    },
+    {
+      "step": 9,
+      "call": 10,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 20.3
+    },
+    {
+      "step": 10,
+      "call": 11,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.9
+    },
+    {
+      "step": 11,
+      "call": 12,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 12.5
+    },
+    {
+      "step": 12,
+      "call": 13,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 61.4
+    },
+    {
+      "step": 13,
+      "call": 14,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 12.3
+    },
+    {
+      "step": 14,
+      "call": 15,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 22.7
+    },
+    {
+      "step": 15,
+      "call": 16,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 14.5
+    },
+    {
+      "step": 16,
+      "call": 17,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 9.8
+    },
+    {
+      "step": 17,
+      "call": 18,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 14.2
+    },
+    {
+      "step": 18,
+      "call": 19,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 24.8
+    },
+    {
+      "step": 19,
+      "call": 20,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.1
+    },
+    {
+      "step": 20,
+      "call": 21,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 22.5
+    },
+    {
+      "step": 21,
+      "call": 22,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.1
+    },
+    {
+      "step": 22,
+      "call": 23,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 16.4
+    },
+    {
+      "step": 23,
+      "call": 24,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 18.9
+    },
+    {
+      "step": 24,
+      "call": 25,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 13.7
+    },
+    {
+      "step": 25,
+      "call": 26,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 18.2
+    },
+    {
+      "step": 26,
+      "call": 27,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.9
+    },
+    {
+      "step": 27,
+      "call": 28,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 17.4
+    },
+    {
+      "step": 28,
+      "call": 29,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.1
+    },
+    {
+      "step": 29,
+      "call": 30,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 22.1
+    },
+    {
+      "step": 30,
+      "call": 31,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 34.0
+    },
+    {
+      "step": 31,
+      "call": 32,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 19.3
+    },
+    {
+      "step": 32,
+      "call": 33,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 32.1
+    },
+    {
+      "step": 33,
+      "call": 34,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 69.0
+    },
+    {
+      "step": 34,
+      "call": 35,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 38.5
+    },
+    {
+      "step": 35,
+      "call": 36,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 26.8
+    },
+    {
+      "step": 36,
+      "call": 37,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 29.7
+    },
+    {
+      "step": 37,
+      "call": 38,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 49.6
+    },
+    {
+      "step": 38,
+      "call": 39,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 35.5
+    },
+    {
+      "step": 39,
+      "call": 40,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 64.0
+    },
+    {
+      "step": 40,
+      "call": 41,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 34.5
+    },
+    {
+      "step": 41,
+      "call": 42,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 35.2
+    },
+    {
+      "step": 42,
+      "call": 43,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 17.4
+    },
+    {
+      "step": 43,
+      "call": 44,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 24.4
+    },
+    {
+      "step": 44,
+      "call": 45,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 21.7
+    },
+    {
+      "step": 45,
+      "call": 46,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 19.3
+    },
+    {
+      "step": 46,
+      "call": 47,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 16.1
+    },
+    {
+      "step": 47,
+      "call": 48,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 23.8
+    },
+    {
+      "step": 48,
+      "call": 49,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 17.2
+    },
+    {
+      "step": 49,
+      "call": 50,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 61.3
+    },
+    {
+      "step": 50,
+      "call": 51,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 42.5
+    },
+    {
+      "step": 51,
+      "call": 52,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 19.7
+    },
+    {
+      "step": 52,
+      "call": 53,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 18.0
+    },
+    {
+      "step": 53,
+      "call": 54,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 29.9
+    },
+    {
+      "step": 54,
+      "call": 55,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 16.6
+    },
+    {
+      "step": 55,
+      "call": 56,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 25.4
+    },
+    {
+      "step": 56,
+      "call": 57,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.7
+    },
+    {
+      "step": 57,
+      "call": 58,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 17.8
+    },
+    {
+      "step": 58,
+      "call": 59,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.7
+    },
+    {
+      "step": 59,
+      "call": 60,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 19.3
+    },
+    {
+      "step": 60,
+      "call": 61,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.5
+    },
+    {
+      "step": 61,
+      "call": 62,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.8
+    },
+    {
+      "step": 62,
+      "call": 63,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 20.0
+    },
+    {
+      "step": 63,
+      "call": 64,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 8.5
+    },
+    {
+      "step": 64,
+      "call": 65,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 6.9
+    },
+    {
+      "step": 65,
+      "call": 66,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.6
+    },
+    {
+      "step": 66,
+      "call": 67,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 37.0
+    },
+    {
+      "step": 67,
+      "call": 68,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.9
+    },
+    {
+      "step": 68,
+      "call": 69,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 69,
+      "call": 70,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.7
+    },
+    {
+      "step": 70,
+      "call": 71,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.7
+    },
+    {
+      "step": 71,
+      "call": 72,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.1
+    },
+    {
+      "step": 72,
+      "call": 73,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 27.6
+    },
+    {
+      "step": 73,
+      "call": 74,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 13.1
+    },
+    {
+      "step": 74,
+      "call": 75,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.6
+    },
+    {
+      "step": 75,
+      "call": 76,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.3
+    },
+    {
+      "step": 76,
+      "call": 77,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 28.3
+    },
+    {
+      "step": 77,
+      "call": 78,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.0
+    },
+    {
+      "step": 78,
+      "call": 79,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 29.2
+    },
+    {
+      "step": 79,
+      "call": 80,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.8
+    },
+    {
+      "step": 80,
+      "call": 81,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 81,
+      "call": 82,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.2
+    },
+    {
+      "step": 82,
+      "call": 83,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 49.1
+    },
+    {
+      "step": 83,
+      "call": 84,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 4.0
+    },
+    {
+      "step": 84,
+      "call": 85,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 35.2
+    },
+    {
+      "step": 85,
+      "call": 86,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.5
+    },
+    {
+      "step": 86,
+      "call": 87,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 20.9
+    },
+    {
+      "step": 87,
+      "call": 88,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 12.9
+    },
+    {
+      "step": 88,
+      "call": 89,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 16.4
+    },
+    {
+      "step": 89,
+      "call": 90,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 12.3
+    },
+    {
+      "step": 90,
+      "call": 91,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 10.4
+    },
+    {
+      "step": 91,
+      "call": 92,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 15.9
+    },
+    {
+      "step": 92,
+      "call": 93,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.3
+    },
+    {
+      "step": 93,
+      "call": 94,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 19.7
+    },
+    {
+      "step": 94,
+      "call": 95,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 29.0
+    },
+    {
+      "step": 95,
+      "call": 96,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 15.0
+    },
+    {
+      "step": 96,
+      "call": 97,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 12.3
+    },
+    {
+      "step": 97,
+      "call": 98,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 29.1
+    },
+    {
+      "step": 98,
+      "call": 99,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 14.4
+    },
+    {
+      "step": 99,
+      "call": 100,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.0
+    },
+    {
+      "step": 100,
+      "call": 101,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.9
+    },
+    {
+      "step": 101,
+      "call": 102,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 15.6
+    },
+    {
+      "step": 102,
+      "call": 103,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 27.2
+    },
+    {
+      "step": 103,
+      "call": 104,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.9
+    },
+    {
+      "step": 104,
+      "call": 105,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 17.2
+    },
+    {
+      "step": 105,
+      "call": 106,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.7
+    },
+    {
+      "step": 106,
+      "call": 107,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 22.2
+    },
+    {
+      "step": 107,
+      "call": 108,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.0
+    },
+    {
+      "step": 108,
+      "call": 109,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 16.0
+    },
+    {
+      "step": 109,
+      "call": 110,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.1
+    },
+    {
+      "step": 110,
+      "call": 111,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 10.6
+    },
+    {
+      "step": 111,
+      "call": 112,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 15.2
+    },
+    {
+      "step": 112,
+      "call": 113,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 9.7
+    },
+    {
+      "step": 113,
+      "call": 114,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 17.4
+    },
+    {
+      "step": 114,
+      "call": 115,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 18.2
+    },
+    {
+      "step": 115,
+      "call": 116,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 16.4
+    },
+    {
+      "step": 116,
+      "call": 117,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 8.0
+    },
+    {
+      "step": 117,
+      "call": 118,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 29.3
+    },
+    {
+      "step": 118,
+      "call": 119,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.0
+    },
+    {
+      "step": 119,
+      "call": 120,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 8.8
+    },
+    {
+      "step": 120,
+      "call": 121,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.7
+    },
+    {
+      "step": 121,
+      "call": 122,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 18.9
+    },
+    {
+      "step": 122,
+      "call": 123,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 123,
+      "call": 124,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.9
+    },
+    {
+      "step": 124,
+      "call": 125,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 15.6
+    },
+    {
+      "step": 125,
+      "call": 126,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 15.8
+    },
+    {
+      "step": 126,
+      "call": 127,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 28.7
+    },
+    {
+      "step": 127,
+      "call": 128,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 20.3
+    },
+    {
+      "step": 128,
+      "call": 129,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.3
+    },
+    {
+      "step": 129,
+      "call": 130,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 38.1
+    },
+    {
+      "step": 130,
+      "call": 131,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 15.9
+    },
+    {
+      "step": 131,
+      "call": 132,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 16.4
+    },
+    {
+      "step": 132,
+      "call": 133,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.1
+    },
+    {
+      "step": 133,
+      "call": 134,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.5
+    },
+    {
+      "step": 134,
+      "call": 135,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.9
+    },
+    {
+      "step": 135,
+      "call": 136,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 42.4
+    },
+    {
+      "step": 136,
+      "call": 137,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 31.1
+    },
+    {
+      "step": 137,
+      "call": 138,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 49.0
+    },
+    {
+      "step": 138,
+      "call": 139,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.5
+    },
+    {
+      "step": 139,
+      "call": 140,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 15.6
+    },
+    {
+      "step": 140,
+      "call": 141,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.3
+    },
+    {
+      "step": 141,
+      "call": 142,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 20.5
+    },
+    {
+      "step": 142,
+      "call": 143,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 10.6
+    },
+    {
+      "step": 143,
+      "call": 144,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 17.2
+    },
+    {
+      "step": 144,
+      "call": 145,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.1
+    },
+    {
+      "step": 145,
+      "call": 146,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.8
+    },
+    {
+      "step": 146,
+      "call": 147,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.9
+    },
+    {
+      "step": 147,
+      "call": 148,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 16.8
+    },
+    {
+      "step": 148,
+      "call": 149,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 15.6
+    },
+    {
+      "step": 149,
+      "call": 150,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.9
+    },
+    {
+      "step": 150,
+      "call": 151,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 17.8
+    },
+    {
+      "step": 151,
+      "call": 152,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 12.5
+    },
+    {
+      "step": 152,
+      "call": 153,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 15.5
+    },
+    {
+      "step": 153,
+      "call": 154,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 18.9
+    },
+    {
+      "step": 154,
+      "call": 155,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.0
+    },
+    {
+      "step": 155,
+      "call": 156,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 12.3
+    },
+    {
+      "step": 156,
+      "call": 157,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 17.2
+    },
+    {
+      "step": 157,
+      "call": 158,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 14.3
+    },
+    {
+      "step": 158,
+      "call": 159,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 46.8
+    },
+    {
+      "step": 159,
+      "call": 160,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.5
+    },
+    {
+      "step": 160,
+      "call": 161,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 17.2
+    },
+    {
+      "step": 161,
+      "call": 162,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 26.8
+    },
+    {
+      "step": 162,
+      "call": 163,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 12.1
+    },
+    {
+      "step": 163,
+      "call": 164,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 29.9
+    },
+    {
+      "step": 164,
+      "call": 165,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.7
+    },
+    {
+      "step": 165,
+      "call": 166,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.9
+    },
+    {
+      "step": 166,
+      "call": 167,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 11.3
+    },
+    {
+      "step": 167,
+      "call": 168,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 12.3
+    },
+    {
+      "step": 168,
+      "call": 169,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 11.7
+    },
+    {
+      "step": 169,
+      "call": 170,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 11.9
+    },
+    {
+      "step": 170,
+      "call": 171,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 13.9
+    },
+    {
+      "step": 171,
+      "call": 172,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 11.7
+    },
+    {
+      "step": 172,
+      "call": 173,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 173,
+      "call": 174,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.7
+    },
+    {
+      "step": 174,
+      "call": 175,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.5
+    },
+    {
+      "step": 175,
+      "call": 176,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 11.5
+    },
+    {
+      "step": 176,
+      "call": 177,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 11.2
+    },
+    {
+      "step": 177,
+      "call": 178,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 12.1
+    },
+    {
+      "step": 178,
+      "call": 179,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 13.1
+    },
+    {
+      "step": 179,
+      "call": 180,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.7
+    },
+    {
+      "step": 180,
+      "call": 181,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.5
+    },
+    {
+      "step": 181,
+      "call": 182,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.5
+    },
+    {
+      "step": 182,
+      "call": 183,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 183,
+      "call": 184,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 184,
+      "call": 185,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.5
+    },
+    {
+      "step": 185,
+      "call": 186,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.1
+    },
+    {
+      "step": 186,
+      "call": 187,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.2
+    },
+    {
+      "step": 187,
+      "call": 188,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 10.9
+    },
+    {
+      "step": 188,
+      "call": 189,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": false,
+      "correct": false,
+      "time": 11.3
+    },
+    {
+      "step": 189,
+      "call": 190,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.7
+    },
+    {
+      "step": 190,
+      "call": 191,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.3
+    },
+    {
+      "step": 191,
+      "call": 192,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": false,
+      "correct": true,
+      "time": 13.9
+    },
+    {
+      "step": 192,
+      "call": 193,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.7
+    },
+    {
+      "step": 193,
+      "call": 194,
+      "action": 2,
+      "action_name": "INSPECT",
+      "malicious": true,
+      "correct": true,
+      "time": 11.9
+    },
+    {
+      "step": 194,
+      "call": 195,
+      "action": 0,
+      "action_name": "ALLOW",
+      "malicious": true,
+      "correct": false,
+      "time": 13.5
+    },
+    {
+      "step": 195,
+      "call": 196,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 12.1
+    },
+    {
+      "step": 196,
+      "call": 197,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 14.0
+    },
+    {
+      "step": 197,
+      "call": 198,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.5
+    },
+    {
+      "step": 198,
+      "call": 199,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.8
+    },
+    {
+      "step": 199,
+      "call": 200,
+      "action": 1,
+      "action_name": "BLOCK",
+      "malicious": true,
+      "correct": true,
+      "time": 11.7
+    }
+  ],
+  "cumulative_accuracy": [
+    1.0,
+    1.0,
+    1.0,
+    0.75,
+    0.8,
+    0.8333333333333334,
+    0.7142857142857143,
+    0.75,
+    0.7777777777777778,
+    0.8,
+    0.8181818181818182,
+    0.75,
+    0.6923076923076923,
+    0.7142857142857143,
+    0.7333333333333333,
+    0.75,
+    0.7647058823529411,
+    0.7777777777777778,
+    0.7894736842105263,
+    0.8,
+    0.8095238095238095,
+    0.8181818181818182,
+    0.782608695652174,
+    0.7916666666666666,
+    0.76,
+    0.7692307692307693,
+    0.7777777777777778,
+    0.7857142857142857,
+    0.7931034482758621,
+    0.8,
+    0.8064516129032258,
+    0.8125,
+    0.8181818181818182,
+    0.8235294117647058,
+    0.8285714285714286,
+    0.8333333333333334,
+    0.8108108108108109,
+    0.8157894736842105,
+    0.8205128205128205,
+    0.825,
+    0.8292682926829268,
+    0.8333333333333334,
+    0.8372093023255814,
+    0.8409090909090909,
+    0.8444444444444444,
+    0.8478260869565217,
+    0.851063829787234,
+    0.8541666666666666,
+    0.8571428571428571,
+    0.86,
+    0.8627450980392157,
+    0.8653846153846154,
+    0.8679245283018868,
+    0.8703703703703703,
+    0.8727272727272727,
+    0.875,
+    0.8771929824561403,
+    0.8793103448275862,
+    0.8813559322033898,
+    0.8833333333333333,
+    0.8852459016393442,
+    0.8870967741935484,
+    0.8888888888888888,
+    0.890625,
+    0.8923076923076924,
+    0.8939393939393939,
+    0.8955223880597015,
+    0.8970588235294118,
+    0.8985507246376812,
+    0.9,
+    0.9014084507042254,
+    0.9027777777777778,
+    0.9041095890410958,
+    0.8918918918918919,
+    0.8933333333333333,
+    0.8947368421052632,
+    0.8961038961038961,
+    0.8974358974358975,
+    0.8987341772151899,
+    0.9,
+    0.9012345679012346,
+    0.9024390243902439,
+    0.9036144578313253,
+    0.9047619047619048,
+    0.9058823529411765,
+    0.9069767441860465,
+    0.9080459770114943,
+    0.9090909090909091,
+    0.9101123595505618,
+    0.9,
+    0.9010989010989011,
+    0.9021739130434783,
+    0.9032258064516129,
+    0.9042553191489362,
+    0.8947368421052632,
+    0.8958333333333334,
+    0.8969072164948454,
+    0.8979591836734694,
+    0.898989898989899,
+    0.9,
+    0.900990099009901,
+    0.9019607843137255,
+    0.8932038834951457,
+    0.8942307692307693,
+    0.8952380952380953,
+    0.8962264150943396,
+    0.897196261682243,
+    0.8981481481481481,
+    0.8899082568807339,
+    0.8909090909090909,
+    0.8918918918918919,
+    0.8928571428571429,
+    0.8938053097345132,
+    0.8859649122807017,
+    0.8869565217391304,
+    0.8879310344827587,
+    0.8888888888888888,
+    0.8898305084745762,
+    0.8907563025210085,
+    0.8916666666666667,
+    0.8925619834710744,
+    0.8934426229508197,
+    0.8943089430894309,
+    0.8951612903225806,
+    0.896,
+    0.8888888888888888,
+    0.889763779527559,
+    0.890625,
+    0.8914728682170543,
+    0.8923076923076924,
+    0.8931297709923665,
+    0.8939393939393939,
+    0.8947368421052632,
+    0.8955223880597015,
+    0.8962962962962963,
+    0.8970588235294118,
+    0.8978102189781022,
+    0.8985507246376812,
+    0.8992805755395683,
+    0.9,
+    0.900709219858156,
+    0.9014084507042254,
+    0.8951048951048951,
+    0.8958333333333334,
+    0.896551724137931,
+    0.8972602739726028,
+    0.8979591836734694,
+    0.8986486486486487,
+    0.8993288590604027,
+    0.9,
+    0.9006622516556292,
+    0.9013157894736842,
+    0.8954248366013072,
+    0.8961038961038961,
+    0.896774193548387,
+    0.8974358974358975,
+    0.8980891719745223,
+    0.8924050632911392,
+    0.8930817610062893,
+    0.89375,
+    0.8944099378881988,
+    0.8950617283950617,
+    0.8895705521472392,
+    0.8902439024390244,
+    0.8909090909090909,
+    0.891566265060241,
+    0.8922155688622755,
+    0.8869047619047619,
+    0.8816568047337278,
+    0.8764705882352941,
+    0.8771929824561403,
+    0.872093023255814,
+    0.8728323699421965,
+    0.8735632183908046,
+    0.8742857142857143,
+    0.8693181818181818,
+    0.8700564971751412,
+    0.8651685393258427,
+    0.8659217877094972,
+    0.8666666666666667,
+    0.8674033149171271,
+    0.8681318681318682,
+    0.8688524590163934,
+    0.8695652173913043,
+    0.8702702702702703,
+    0.8709677419354839,
+    0.8716577540106952,
+    0.8723404255319149,
+    0.8677248677248677,
+    0.868421052631579,
+    0.8691099476439791,
+    0.8697916666666666,
+    0.8704663212435233,
+    0.8711340206185567,
+    0.8666666666666667,
+    0.8673469387755102,
+    0.868020304568528,
+    0.8686868686868687,
+    0.8693467336683417,
+    0.87
+  ],
+  "elapsed": 3718.429352283478,
+  "timestamp": "2026-04-26T13:46:10.602041"
+}

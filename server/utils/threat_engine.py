@@ -98,8 +98,17 @@ class ThreatEngine:
     def generate_attack_sessions(
         self, tick: int, generator: TrafficGenerator,
         blocked_attackers: Set[str],
+        escalation_rate_mod: float = 1.0,
+        stealth_multiplier: float = 1.0,
     ) -> List[Dict]:
-        """Generate attack sessions for all active attackers, handling adaptation."""
+        """Generate attack sessions for all active attackers, handling adaptation.
+
+        Args:
+            escalation_rate_mod: Multiplier on base escalation probability.
+                Values > 1.0 make attackers advance through kill chain faster.
+            stealth_multiplier: Controls how hard stealth attacks are to detect.
+                Values > 1.0 blend malicious features toward benign distributions.
+        """
         sessions: List[Dict] = []
 
         for attacker in list(self._active_attackers.values()):
@@ -126,9 +135,12 @@ class ThreatEngine:
                     # First detection — try to advance past detected phase
                     attacker.phase = min(attacker.phase + 1, 3)
 
-            # --- Natural phase escalation ---
-            elif self.rng.random() < ESCALATION_PROB.get(attacker.scenario, 0.2):
-                attacker.phase = min(attacker.phase + 1, 3)
+            # --- Natural phase escalation (modified by escalation_rate_mod) ---
+            else:
+                base_prob = ESCALATION_PROB.get(attacker.scenario, 0.2)
+                effective_prob = min(0.95, base_prob * escalation_rate_mod)
+                if self.rng.random() < effective_prob:
+                    attacker.phase = min(attacker.phase + 1, 3)
 
             # --- Check for success (exfiltration complete) ---
             if attacker.phase == 3 and attacker.ticks_alive > 8:
@@ -153,6 +165,30 @@ class ThreatEngine:
                 scenario=attacker.scenario,
                 attacker_id=attacker.attacker_id,
             )
+
+            # --- Apply stealth blending to stealth-mode sessions ---
+            if attacker.stealth_mode and stealth_multiplier > 1.0:
+                blend_strength = min(0.6, 0.2 * (stealth_multiplier - 1.0))
+                for s in generated:
+                    s["metadata"]["is_stealth"] = True
+                    feats = s["features"]
+                    # Blend suspicious features toward benign ranges
+                    feats["session_history_score"] = float(min(1.0,
+                        feats["session_history_score"] + blend_strength * 0.5
+                    ))
+                    feats["connection_reuse"] = float(min(1.0,
+                        feats["connection_reuse"] + blend_strength * 0.4
+                    ))
+                    feats["entropy_score"] = float(max(0.0,
+                        feats["entropy_score"] - blend_strength * 0.3
+                    ))
+                    feats["geo_distance"] = float(max(0.0,
+                        feats["geo_distance"] * (1.0 - blend_strength * 0.4)
+                    ))
+            else:
+                for s in generated:
+                    s["metadata"]["is_stealth"] = False
+
             attacker.sessions_generated += len(generated)
             sessions.extend(generated)
 

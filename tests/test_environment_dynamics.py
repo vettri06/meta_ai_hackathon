@@ -17,8 +17,10 @@ def test_inspect_keeps_session_pending_and_reveals():
     env.reset(task="easy", seed=12)
     session_id = next(iter(env.pending_sessions.keys()))
     env.take_action(session_id=session_id, action=2)
-    assert session_id in env.pending_sessions
-    assert env.pending_sessions[session_id]["metadata"]["revealed"] is True
+    # After INSPECT, session moves to inspected pool only (not duplicated in pending)
+    assert session_id in env.inspected_sessions
+    assert session_id not in env.pending_sessions
+    assert env.inspected_sessions[session_id]["metadata"]["revealed"] is True
 
 
 def test_step_single_has_fixed_size_action_mode():
